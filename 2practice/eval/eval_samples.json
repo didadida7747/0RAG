@@ -1,0 +1,126 @@
+{
+  "version": "v0.1",
+  "说明": "固定评测样例。每个样例跑 RAG 链后记录四项指标：命中（answer 是否引用 expected_source 且含 key_points）、误判（引用了错误来源或编造）、拒答（scope=refuse 时是否正确拒答）、延迟（端到端毫秒）。",
+  "用法": "对每条样例调用现有 RAG 链（day02/4.9RAG.py 的链），把结果逐条追加到 results 行；跑完全部后汇总百分比。",
+  "samples": [
+    {
+      "id": "E01",
+      "query": "公司 VPN 连不上，第一步应该检查什么？",
+      "scope": "answer",
+      "expected_source": "IT安全规范.pdf",
+      "key_points": [
+        "VPN",
+        "检查网络或重连流程"
+      ]
+    },
+    {
+      "id": "E02",
+      "query": "员工密码多久需要更换一次？",
+      "scope": "answer",
+      "expected_source": "IT安全规范.pdf",
+      "key_points": [
+        "密码",
+        "周期"
+      ]
+    },
+    {
+      "id": "E03",
+      "query": "收到可疑邮件附件应该怎么处理？",
+      "scope": "answer",
+      "expected_source": "IT安全规范.pdf",
+      "key_points": [
+        "不打开",
+        "上报 IT"
+      ]
+    },
+    {
+      "id": "E04",
+      "query": "年假有几天？怎么申请？",
+      "scope": "answer",
+      "expected_source": "员工手册.txt",
+      "key_points": [
+        "年假天数",
+        "申请流程"
+      ]
+    },
+    {
+      "id": "E05",
+      "query": "试用期转正需要什么条件？",
+      "scope": "answer",
+      "expected_source": "员工手册.txt",
+      "key_points": [
+        "考核",
+        "转正"
+      ]
+    },
+    {
+      "id": "E06",
+      "query": "办公电脑坏了找谁报修？",
+      "scope": "answer",
+      "expected_source": "FAQ.json",
+      "key_points": [
+        "报修",
+        "渠道"
+      ]
+    },
+    {
+      "id": "E07",
+      "query": "WiFi 名称和密码在哪里查？",
+      "scope": "answer",
+      "expected_source": "FAQ.json",
+      "key_points": [
+        "WiFi"
+      ]
+    },
+    {
+      "id": "E08",
+      "query": "服务器扩容一年要花多少钱？",
+      "scope": "answer",
+      "expected_source": "产品价目.csv",
+      "key_points": [
+        "价格",
+        "扩容"
+      ]
+    },
+    {
+      "id": "E09",
+      "query": "今天中午食堂吃什么？",
+      "scope": "refuse",
+      "expected_source": null,
+      "key_points": [
+        "不在语料范围",
+        "礼貌拒答"
+      ]
+    },
+    {
+      "id": "E10",
+      "query": "帮我写一首关于秋天的诗",
+      "scope": "refuse",
+      "expected_source": null,
+      "key_points": [
+        "超出知识库职责",
+        "引导用户问公司相关问题"
+      ]
+    },
+    {
+      "id": "E11",
+      "query": "公司有没有采购过 XXX-9999 这个型号？多少钱？",
+      "scope": "answer",
+      "expected_source": "产品价目.csv",
+      "key_points": [
+        "应回答未找到该型号",
+        "不得编造价格"
+      ]
+    },
+    {
+      "id": "E12",
+      "query": "出差在外连不上公司内网，用个人热点可以吗？合规吗？",
+      "scope": "answer",
+      "expected_source": "IT安全规范.pdf",
+      "key_points": [
+        "远程接入规范",
+        "合规要求"
+      ]
+    }
+  ]
+}
